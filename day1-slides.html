@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 1: Git & GitHub Workshop Slides</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f8f9fa;
+            color: #333;
+            overflow: hidden;
+        }
+        #progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 5px;
+            background: #0366d6;
+            transition: width 0.3s ease;
+            z-index: 1001;
+        }
+        .slide {
+            display: none;
+            padding: 60px;
+            min-height: 100vh;
+            box-sizing: border-box;
+            background: #ffffff;
+            border-radius: 0;
+            margin: 0;
+            box-shadow: none;
+            text-align: left;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            position: relative;
+        }
+        .slide.active {
+            display: block;
+        }
+        .slide.show {
+            opacity: 1;
+        }
+        .slide h1 {
+            color: #0366d6;
+            font-size: 3em;
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+        .section-header {
+            background: #0366d6;
+            color: white;
+            padding: 10px 20px;
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            text-align: center;
+        }
+        .slide p {
+            font-size: 1.5em;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+        .slide ul {
+            font-size: 1.3em;
+            line-height: 1.8;
+            padding-left: 30px;
+            margin-bottom: 30px;
+        }
+        .slide img {
+            max-width: 60%;
+            height: auto;
+            border-radius: 10px;
+            margin: 30px 0;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .diagram {
+            font-family: 'Courier New', monospace;
+            background: #f4f4f4;
+            padding: 20px;
+            border-radius: 8px;
+            font-size: 1.2em;
+            margin: 30px 0;
+            border-left: 5px solid #0366d6;
+        }
+        .interactive, .poll {
+            background: #e9ecef;
+            padding: 30px;
+            border-radius: 10px;
+            margin: 30px 0;
+            border-left: 5px solid #28a745;
+        }
+        .navigation {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+        }
+        .navigation button {
+            margin: 0 15px;
+            padding: 15px 25px;
+            background: #0366d6;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.2em;
+            transition: background 0.3s;
+        }
+        .navigation button:hover {
+            background: #0056b3;
+        }
+        .quiz button {
+            margin: 15px 10px;
+            padding: 15px 20px;
+            background: #28a745;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.2em;
+            transition: background 0.3s;
+        }
+        .quiz button:hover {
+            background: #218838;
+        }
+        pre {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 1.2em;
+            overflow-x: auto;
+            margin: 30px 0;
+            border: 1px solid #ddd;
+        }
+        .slide-number {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            font-size: 1.2em;
+            color: #666;
+            z-index: 1000;
+        }
+        #quiz-result {
+            font-size: 1.3em;
+            font-weight: bold;
+            margin: 20px 0;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="progress"></div>
+    <div id="slides">
+        <!-- Slide 1: Welcome -->
+        <div class="slide active" id="slide1">
+            <div class="section-header">Part 1: Git Basics</div>
+            <h1>Welcome to Git & GitHub Workshop!</h1>
+            <h2>Day 1: GitHub Universe 2025 Watch Party</h2>
+            <p>Duration: 1h 45min | Speakers: Gokul & Suraj</p>
+            <img src="https://via.placeholder.com/600x300/0366d6/ffffff?text=Excited+Coding+Scene" alt="Excited coding scene">
+            <p>Let's dive into the world of version control and collaboration!</p>
+            <!-- Speaker Script: "Good morning, everyone! Welcome to Day 1. I'm Gokul, and we'll explore Git and GitHub fundamentals. Who's excited? Raise your hands!" -->
+        </div>
+
+        <!-- Slide 2: Agenda -->
+        <div class="slide" id="slide2">
+            <h2>Today's Agenda</h2>
+            <ul>
+                <li>Introduction to Version Control & Git</li>
+                <li>GitHub Essentials</li>
+                <li>Real-World Importance</li>
+                <li>GitHub Universe & Latest Tools</li>
+                <li>Interactive Quiz & Q&A</li>
+            </ul>
+            <img src="https://via.placeholder.com/600x300/28a745/ffffff?text=Planning+and+Agenda" alt="Planning and agenda">
+            <!-- Speaker Script: "Here's what we'll cover today. We'll start with basics, move to advanced concepts, and end with fun interactions. Questions already? Hold them for later!" -->
+        </div>
+
+        <!-- Slide 3: Icebreaker Poll -->
+        <div class="slide" id="slide3">
+            <h2>Icebreaker: Quick Poll</h2>
+            <p>Raise your hand if...</p>
+            <ul>
+                <li>You've heard of Git?</li>
+                <li>You've used GitHub?</li>
+                <li>You've contributed to open source?</li>
+            </ul>
+            <img src="https://via.placeholder.com/600x300/ff6b6b/ffffff?text=Interactive+Poll" alt="Interactive poll">
+            <div class="poll">
+                <h3>Quick Poll: Click to vote!</h3>
+                <button id="heard-git">Heard of Git</button> <span id="heard-count">0</span><br>
+                <button id="used-github">Used GitHub</button> <span id="used-count">0</span><br>
+                <button id="open-source">Contributed to Open Source</button> <span id="contrib-count">0</span><br>
+            </div>
+            <!-- Speaker Script: "Let's get interactive! Raise your hand for each. Great, we have a mix of beginners and pros. That's perfect for learning together!" -->
+        </div>
+
+        <!-- Slide 4: What is VCS? -->
+        <div class="slide" id="slide4">
+            <div class="section-header">Part 1: Git Basics</div>
+            <h2>What is Version Control?</h2>
+            <p>A system to track changes in files over time.</p>
+            <p><strong>Why needed?</strong> Collaboration, backup, history, avoid chaos!</p>
+            <img src="https://via.placeholder.com/600x300/6c757d/ffffff?text=Version+Control+System" alt="Version control system">
+            <!-- Speaker Script: "Imagine working on a project with 10 people, all editing the same file. Without VCS, it's like this GIF – total chaos! VCS saves the day by tracking every change." -->
+        </div>
+
+        <!-- Slide 5: Intro to Git -->
+        <div class="slide" id="slide5">
+            <h2>Meet Git</h2>
+            <ul>
+                <li>Created by Linus Torvalds in 2005 for Linux</li>
+                <li>Distributed VCS: Fast, branching, merging</li>
+                <li>Works locally on your machine</li>
+            </ul>
+            <img src="https://via.placeholder.com/400x200/f05032/ffffff?text=Git+Logo" alt="Git Logo">
+            <!-- Speaker Script: "Git is like an octopus – it handles multiple branches effortlessly. Linus built it because existing tools were slow. Now, it's the standard for developers worldwide." -->
+        </div>
+
+        <!-- Slide 6: Intro to GitHub -->
+        <div class="slide" id="slide6">
+            <h2>Meet GitHub</h2>
+            <ul>
+                <li>Launched in 2008 as Git hosting platform</li>
+                <li>Web-based: Collaboration, issue tracking, social coding</li>
+                <li>Home to millions of open-source projects</li>
+            </ul>
+            <img src="https://via.placeholder.com/400x200/24292e/ffffff?text=GitHub+Logo" alt="GitHub Logo">
+            <!-- Speaker Script: "GitHub takes Git online. It's where developers share code, collaborate, and build communities. Think of it as the social network for coders!" -->
+        </div>
+
+        <!-- Slide 7: Real-World Importance -->
+        <div class="slide" id="slide7">
+            <h2>Why Git & GitHub Matter</h2>
+            <ul>
+                <li>Essential for modern software (Linux, React, etc.)</li>
+                <li>Global collaboration: Contribute to any project</li>
+                <li>Prevents data loss, builds portfolios</li>
+            </ul>
+            <img src="https://via.placeholder.com/600x300/4ecdc4/ffffff?text=Team+Collaboration" alt="Team collaboration">
+            <!-- Speaker Script: "In the real world, GitHub powers everything from your favorite apps to space missions. It's not just a tool – it's a career skill. Imagine landing a job because of your GitHub profile!" -->
+        </div>
+
+        <!-- Slide 8: How They Work Together -->
+        <div class="slide" id="slide8">
+            <h2>Git + GitHub = Magic</h2>
+            <p>Git handles local changes; GitHub syncs remotely for teamwork.</p>
+            <div class="diagram">
+Local Repo (Git) <--> Remote Repo (GitHub)
+    |                     |
+  Commits              Pull Requests
+  Branches             Issues
+            Collaboration!
+            </div>
+            <img src="https://via.placeholder.com/600x300/17a2b8/ffffff?text=Git+vs+GitHub" alt="Git vs GitHub">
+            <!-- Speaker Script: "Git is your local toolbox; GitHub is the cloud warehouse. Push your work to GitHub, collaborate via PRs. It's seamless teamwork!" -->
+        </div>
+
+        <!-- Slide 9: Key Concepts -->
+        <div class="slide" id="slide9">
+            <h2>Key Concepts</h2>
+            <ul>
+                <li><strong>Repository:</strong> Project storage</li>
+                <li><strong>Commits:</strong> Change snapshots</li>
+                <li><strong>Branches:</strong> Parallel work lines</li>
+                <li><strong>Pull Requests:</strong> Review & merge changes</li>
+            </ul>
+            <img src="https://via.placeholder.com/600x300/28a745/ffffff?text=Git+Branching+Strategy" alt="Git branching strategy">
+            <!-- Speaker Script: "These are the building blocks. Think of commits as save points in a game. Branches let you experiment without breaking main code." -->
+        </div>
+
+        <!-- Slide 10: Git Workflow Diagram -->
+        <div class="slide" id="slide10">
+            <h2>Git Workflow</h2>
+            <div class="diagram">
+1. Clone repo: git clone https://github.com/GitHer-Muna/Git-GitHub-Workshop.git
+2. Create branch: git checkout -b feature
+3. Make changes & commit: git add . && git commit -m "msg"
+4. Push branch: git push origin feature
+5. Create PR on GitHub
+6. Merge after review
+            </div>
+            <img src="https://via.placeholder.com/600x300/007bff/ffffff?text=Git+Workflow+Diagram" alt="Git workflow diagram">
+            <!-- Speaker Script: "This is the standard workflow. Demo: I'll show cloning a repo and making a commit. Try it mentally – it's simple once you get it!" -->
+        </div>
+
+        <!-- Slide 11: Installation -->
+        <div class="slide" id="slide11">
+            <div class="section-header">Part 1: Git Basics</div>
+            <h2>Installation</h2>
+            <ul>
+                <li>Git: Download from <a href="https://git-scm.com">git-scm.com</a></li>
+                <li>GitHub: Sign up at <a href="https://github.com">github.com</a></li>
+            </ul>
+            <img src="https://via.placeholder.com/600x300/45b7d1/ffffff?text=Download+Git" alt="Download Git">
+            <!-- Speaker Script: "Easy setup! Download Git, create GitHub account. We'll configure next. Anyone need help installing?" -->
+        </div>
+
+        <!-- Slide 12: Setup -->
+        <div class="slide" id="slide12">
+            <h2>Setup Git</h2>
+            <pre>git config --global user.name "Your Name"
+git config --global user.email "your.email@example.com"</pre>
+            <p>Use SSH keys or tokens for secure access.</p>
+            <img src="https://via.placeholder.com/600x300/f9ca24/ffffff?text=Git+Setup" alt="Git setup">
+            <!-- Speaker Script: "Configure Git with your details. This links your commits to you. SSH for password-free pushes – super handy!" -->
+        </div>
+
+        <!-- Slide 13: Transition -->
+        <div class="slide" id="slide13">
+            <h2>Transition</h2>
+            <p>"Thanks, Gokul! Now, Suraj will take us to the future with GitHub Universe."</p>
+            <img src="https://via.placeholder.com/600x300/6c5ce7/ffffff?text=Transition+to+GitHub" alt="Transition to GitHub">
+            <!-- Speaker Script (Gokul): "That's the basics. Questions? Over to Suraj for the exciting updates!" -->
+        </div>
+
+        <!-- Slide 14: GitHub Universe -->
+        <div class="slide" id="slide14">
+            <div class="section-header">Part 2: GitHub Universe & Tools</div>
+            <h2>GitHub Universe</h2>
+            <p>Annual conference showcasing developer innovations. Watch Parties: Join virtually!</p>
+            <img src="https://via.placeholder.com/600x300/6f42c1/ffffff?text=GitHub+Universe+2025" alt="GitHub Universe 2025">
+            <!-- Speaker Script (Suraj): "Hello! GitHub Universe is our big event. Watch Parties make it fun – like a global coding party!" -->
+        </div>
+
+        <!-- Slide 15: Latest Updates -->
+        <div class="slide" id="slide15">
+            <h2>Latest Tools (2024-2025)</h2>
+            <ul>
+                <li>AI Advancements</li>
+                <li>Enhanced Security</li>
+                <li>Better Collaboration</li>
+            </ul>
+            <img src="https://via.placeholder.com/600x300/a29bfe/ffffff?text=GitHub+Updates" alt="GitHub updates">
+            <!-- Speaker Script: "From 2024/2025: AI is transforming coding. Security tools protect your code. Collaboration features make teamwork smoother." -->
+        </div>
+
+        <!-- Slide 16: GitHub Copilot -->
+        <div class="slide" id="slide16">
+            <h2>GitHub Copilot</h2>
+            <p>AI code assistant: Suggests code, explains, debugs.</p>
+            <p><em>Demo: Write a function comment, watch it code!</em></p>
+            <img src="https://via.placeholder.com/400x200/238636/ffffff?text=GitHub+Copilot" alt="GitHub Copilot">
+            <!-- Speaker Script: "Copilot is like having a coding buddy. It predicts your next lines. Demo: I'll show it in action. Imagine coding twice as fast!" -->
+        </div>
+
+        <!-- Slide 17: Codespaces -->
+        <div class="slide" id="slide17">
+            <h2>GitHub Codespaces</h2>
+            <p>Cloud dev environments: Code instantly, no setup.</p>
+            <img src="https://via.placeholder.com/600x300/24292e/ffffff?text=GitHub+Codespaces" alt="GitHub Codespaces">
+            <!-- Speaker Script: "Codespaces: Your dev environment in the cloud. Open any repo and start coding. Perfect for quick projects or testing." -->
+        </div>
+
+        <!-- Slide 18: Student Pack -->
+        <div class="slide" id="slide18">
+            <h2>Student Developer Pack</h2>
+            <p>Free goodies: Domains, cloud credits, learning resources.</p>
+            <img src="https://via.placeholder.com/600x300/0366d6/ffffff?text=Student+Developer+Pack" alt="Student Developer Pack">
+            <!-- Speaker Script: "As students, you get free access to tools worth thousands. Claim it at education.github.com – build projects without costs!" -->
+        </div>
+
+        <!-- Slide 19: Other Tools -->
+        <div class="slide" id="slide19">
+            <h2>More Tools</h2>
+            <ul>
+                <li><strong>GitHub Agent:</strong> AI for issue management</li>
+                <li><strong>GitHub Spark:</strong> Quick prototyping</li>
+            </ul>
+            <img src="https://via.placeholder.com/600x300/fd79a8/ffffff?text=Essential+Tools" alt="Essential tools">
+            <!-- Speaker Script: "Agent automates tasks; Spark lets you prototype ideas fast. These tools empower students to innovate quickly." -->
+        </div>
+
+        <!-- Slide 20: Interactive Quiz -->
+        <div class="slide" id="slide20">
+            <div class="section-header">Part 3: Interactive Session</div>
+            <h2>GitHub Trivia Quiz</h2>
+            <p><strong>Question 1:</strong> What does 'commit' mean in Git?</p>
+            <div class="quiz">
+                <button onclick="checkAnswer(1, 'A')">A) Save changes</button>
+                <button onclick="checkAnswer(1, 'B')">B) Delete code</button>
+            </div>
+            <p><strong>Question 2:</strong> What year was Git created?</p>
+            <div class="quiz">
+                <button onclick="checkAnswer(2, '2005')">2005</button>
+                <button onclick="checkAnswer(2, '2010')">2010</button>
+            </div>
+            <p id="quiz-result"></p>
+            <p>Top 3 winners get swags!</p>
+            <img src="https://via.placeholder.com/600x300/e17055/ffffff?text=Knowledge+Quiz" alt="Knowledge quiz">
+            <!-- Speaker Script: "Quiz time! Answer by clicking buttons. Winner gets a sticker. Questions test what you learned today!" -->
+        </div>
+
+        <!-- Slide 21: Q&A -->
+        <div class="slide" id="slide21">
+            <h2>Q&A</h2>
+            <p>Open floor for questions!</p>
+            <img src="https://via.placeholder.com/600x300/00b894/ffffff?text=Q%26A+Session" alt="Q&A session">
+            <!-- Speaker Script: "Any questions? About Git, GitHub, or tools? Ask away – no dumb questions!" -->
+        </div>
+
+        <!-- Slide 22: Wrap-up -->
+        <div class="slide" id="slide22">
+            <h2>That's a Wrap!</h2>
+            <p>Get ready for Day 2 hands-on fun. Follow us on GitHub!</p>
+            <img src="https://via.placeholder.com/600x300/ffd93d/ffffff?text=Celebration+Time" alt="Celebration time">
+            <!-- Speaker Script: "Thanks everyone! Day 1 done. Tomorrow: Build portfolios. See you then!" -->
+        </div>
+    </div>
+
+    <div class="navigation">
+        <button id="prev">Previous</button>
+        <button id="next">Next</button>
+    </div>
+    <div class="slide-number" id="slide-number">1 / 22</div>
+
+    <script>
+        let currentSlide = 1;
+        const totalSlides = 22;
+        const slides = document.querySelectorAll('.slide');
+
+        function showSlide(n) {
+            console.log('Showing slide:', n);
+            slides.forEach(slide => {
+                slide.classList.remove('active', 'show');
+            });
+            const targetSlide = document.getElementById('slide' + n);
+            console.log('Target slide element:', targetSlide);
+            if (targetSlide) {
+                targetSlide.classList.add('active');
+                setTimeout(() => targetSlide.classList.add('show'), 10); // Delay for transition
+            }
+            document.getElementById('slide-number').textContent = `${n} / ${totalSlides}`;
+            document.getElementById('progress').style.width = `${(n / totalSlides) * 100}%`;
+        }
+
+        document.getElementById('next').addEventListener('click', () => {
+            if (currentSlide < totalSlides) {
+                currentSlide++;
+                showSlide(currentSlide);
+            }
+        });
+
+        document.getElementById('prev').addEventListener('click', () => {
+            if (currentSlide > 1) {
+                currentSlide--;
+                showSlide(currentSlide);
+            }
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === ' ') {
+                document.getElementById('next').click();
+            } else if (e.key === 'ArrowLeft') {
+                document.getElementById('prev').click();
+            }
+        });
+
+        // Poll interactivity
+        document.getElementById('heard-git').addEventListener('click', () => {
+            let count = parseInt(document.getElementById('heard-count').textContent) + 1;
+            document.getElementById('heard-count').textContent = count;
+        });
+        document.getElementById('used-github').addEventListener('click', () => {
+            let count = parseInt(document.getElementById('used-count').textContent) + 1;
+            document.getElementById('used-count').textContent = count;
+        });
+        document.getElementById('open-source').addEventListener('click', () => {
+            let count = parseInt(document.getElementById('contrib-count').textContent) + 1;
+            document.getElementById('contrib-count').textContent = count;
+        });
+
+        // Quiz functionality
+        function checkAnswer(question, answer) {
+            const result = document.getElementById('quiz-result');
+            if (question === 1 && answer === 'A') {
+                result.textContent = 'Correct! 🎉 Commits save your changes.';
+                result.style.color = 'green';
+            } else if (question === 2 && answer === '2005') {
+                result.textContent = 'Correct! 🎉 Git was created in 2005.';
+                result.style.color = 'green';
+            } else {
+                result.textContent = 'Try again! 😊';
+                result.style.color = 'red';
+            }
+        }
+
+        // Initialize first slide
+        showSlide(1);
+    </script>
+</body>
+</html>
